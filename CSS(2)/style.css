@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #475569;
+    background-image: linear-gradient(whitesmoke, #475569);
+    font-size: 1.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+header, footer{
+    position: sticky;
+    background-color: #1e293b;
+    color: whitesmoke;
+    text-align: center;
+}
+header{
+    top: 0;
+}
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    list-style: none;
+}
+nav a, nav a:visited{     
+    color: #000;
+}
+nav a:hover, nav a:focus {
+    color: rgb(24, 24, 134);
+}
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1.5rem;
+}
+footer {
+    bottom: 0;
+}
+.box{
+    scroll-margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid #000;
+    background-color: #cbd5e1;
+    padding: 1rem;
+    width: min(100%, 350px);
+    text-align: center;
+}
+img{
+    border: 2px solid grey;
+    outline: 2px solid grey;
+    border-radius: 50%;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.nowrap{
+    white-space: nowrap;
+}
+.box figure{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.box figcaption{
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
