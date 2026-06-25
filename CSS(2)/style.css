@@ -4,19 +4,19 @@
     box-sizing: border-box;
 }
 html{
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;    
 }
 body{
-    display: flex;
+    display: flex; /*Here we gave display:flex in our body to flow it's content like header,main,footer in column flex-direction*/
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /*It forces the page to have atleast 100 viewport height even if content is less*/
     background-color: #475569;
     background-image: linear-gradient(whitesmoke, #475569);
     font-size: 1.5rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 header, footer{
-    position: sticky;
+    position: sticky;                     /**/
     background-color: #1e293b;
     color: whitesmoke;
     text-align: center;
@@ -39,7 +39,7 @@ nav a:hover, nav a:focus {
     color: rgb(24, 24, 134);
 }
 main {
-    flex-grow: 1;
+    flex-grow: 1; /*With the help of it, main is taking all the remaining space to itself*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +50,7 @@ footer {
     bottom: 0;
 }
 .box{
-    scroll-margin-top: 10rem;
+    scroll-margin-top: 10rem;   /*It gives 10 rem margin at top for scrolling*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,7 @@ img{
     outline: 2px solid grey;
     border-radius: 50%;
     display: block;
-    max-width: 100%;
+    max-width: 100%; 
     height: auto;
 }
 .nowrap{
@@ -81,4 +81,66 @@ img{
     font-size: 2rem;
     margin: 1rem;
     text-align: center;
+}
+@media screen and (min-width:575px){    /*If minimum width is 575px only then apply this rules*/
+    main{
+        flex-direction: row;
+        flex-wrap: wrap;          
+        justify-content: center;
+    }
+    .box{
+        width: min(100%, 400px);  /*It's telling- give me 33% of available space minus a little gap of 1rem, but never wider than 500px*/
+    }
+    .box:last-child{
+        order: -1;  /*last child of box will be displayed first*/
+    }
+
+}
+@media screen and (min-width:768px) {
+    nav{
+        display: none;   /*It removes the nav from display since all the content is viewable within a single page*/
+    }
+    .box{
+        width: min(100%, 350px);
+    }
+    .box figure{
+        flex-direction: column-reverse;
+    }
+    .box p{
+        margin-block-start: 1rem;
+    }
+}
+@media screen and (min-width:992px){
+    .box{
+        width: min(100%, 400px);
+    }
+    .box:nth-child(2){
+        order: -1;
+    }
+}
+@media screen and (min-width:1200px){
+    .box{
+        width: min(33% - 1rem, 500px); /*It's telling to take 33% of the available space while also leaving 1rem behind and grow upto max 500px.*/
+    }
+}
+@media screen and (max-height:425px) and (min-aspect-ratio: 7/4){
+    .box{
+        width: min(33% - 0.25rem, 200px);
+    }
+    h1{
+        font-size: 1.5rem;
+    }
+    nav{
+        display: none;
+    }
+    .box figcaption, .box p{
+        font-size: 1.3rem;
+    }
+    /*Flex:nowrap - forces all items to stay on ONE line regardless of their width. Normally flex items wrap to next line when they can't fit. nowrap overrides this and keeps everything on a single row even if items have to shrink. In landscape phone mode you want all three cards side by side in one row, not stacked — nowrap forces this.*/
+    main{
+        flex-direction: row;
+        flex-wrap: nowrap;   
+        justify-content: space-evenly;
+        align-items: stretch; /*makes all children stretch to the same height as the tallest item in a row.*/
+    }
 }
