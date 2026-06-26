@@ -1,146 +1,85 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    scroll-behavior: smooth;    
-}
 body{
-    display: flex; /*Here we gave display:flex in our body to flow it's content like header,main,footer in column flex-direction*/
-    flex-direction: column;
-    min-height: 100vh; /*It forces the page to have atleast 100 viewport height even if content is less*/
-    background-color: #475569;
-    background-image: linear-gradient(whitesmoke, #475569);
-    font-size: 1.5rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-header, footer{
-    position: sticky;                     /**/
-    background-color: #1e293b;
-    color: whitesmoke;
-    text-align: center;
-}
-header{
-    top: 0;
-}
-nav ul{
+    min-height: 100vh;
     display: flex;
-    justify-content: space-evenly;
-    background-color: #fff;
-    padding: 0.5rem;
-    border: 1px solid #000;
-    list-style: none;
-}
-nav a, nav a:visited{     
-    color: #000;
-}
-nav a:hover, nav a:focus {
-    color: rgb(24, 24, 134);
-}
-main {
-    flex-grow: 1; /*With the help of it, main is taking all the remaining space to itself*/
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1rem;
-    gap: 1.5rem;
 }
-footer {
-    bottom: 0;
-}
-.box{
-    scroll-margin-top: 10rem;   /*It gives 10 rem margin at top for scrolling*/
+.box2{
+    border: 2px solid black;
+    width: 800px;
+    height: 400px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    border-radius: 10px;
-    border: 2px solid #000;
-    background-color: #cbd5e1;
-    padding: 1rem;
-    width: min(100%, 350px);
-    text-align: center;
+    justify-content: center;
 }
-img{
-    border: 2px solid grey;
-    outline: 2px solid grey;
-    border-radius: 50%;
-    display: block;
-    max-width: 100%; 
-    height: auto;
-}
-.nowrap{
-    white-space: nowrap;
-}
-.box figure{
+.box1{
+    /* background-color: gray; */
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    /* transform: translateX(-50%);
+    transform: translateY(-10rem);
+    transform: translate(60%, -8rem);
+    transform: rotate(-64deg);
+    transform: scaleX(80%);
+    transform: scaleY(120%);
+    transform: scale(70%, 90%);
+    transform: skewX(-10deg);
+    transform: skewY(10deg);
+    transform: skew(-10deg, 10deg); */
+    
 }
-.box figcaption{
-    font-size: 2rem;
-    margin: 1rem;
-    text-align: center;
+
+/* Transitions*/
+
+.box1:hover{
+    background-color: rebeccapurple;
+    transform: rotate(90deg);
+    /* transition-property: background-color, transform;
+    transition: all;
+    transition-duration: 2s, 3s;
+    transition-delay: 0.5s; 
+    transition-timing-function: linear;*/
+    transition: all 2s ease-in-out 0.5s;
 }
-@media screen and (min-width:575px){    /*If minimum width is 575px only then apply this rules*/
-    main{
-        flex-direction: row;
-        flex-wrap: wrap;          
-        justify-content: center;
+
+/*Animations*/
+/*Animation-name deifnes the name of animation*/
+/*animation-duration Puts a duration for how much time the animation will take to complete one round*/
+/*animation-delay delays and starts the animation by the specifies delay second*/
+/*animation-iteration-count is the one that decides for how many turns the animation will run*/
+/*animation-timing-function decides the speed by which animation will occur*/
+/*Animation-direction This defines whether the animation plays forward, backward, or alternates back and forth. It's normal by default*/
+/*Animation-fill-mode dictates what styles are applied to the element before the animation starts (during a delay) and after it finishes.*/
+
+.box1{
+    /* animation-name: moving;   
+    animation-duration: 7s;     
+    animation-timing-function: ease-in-out;   
+    animation-delay: 1s;      
+    animation-iteration-count: infinite;  
+    animation-direction: normal;      
+    animation-fill-mode: forwards; */
+    animation: moving 7s ease-in-out 1s infinite normal forwards;
+}
+@keyframes moving {
+    0%{
+        transform: translate(0, 0);
     }
-    .box{
-        width: min(100%, 400px);  /*It's telling- give me 33% of available space minus a little gap of 1rem, but never wider than 500px*/
-    }
-    .box:last-child{
-        order: -1;  /*last child of box will be displayed first*/
+    30% {
+    transform: translate(300px, -100px) rotate(180deg);
     }
 
-}
-@media screen and (min-width:768px) {
-    nav{
-        display: none;   /*It removes the nav from display since all the content is viewable within a single page*/
+    66% {
+    transform: translate(-300px, 100px) rotate(-180deg);
     }
-    .box{
-        width: min(100%, 350px);
-    }
-    .box figure{
-        flex-direction: column-reverse;
-    }
-    .box p{
-        margin-block-start: 1rem;
-    }
-}
-@media screen and (min-width:992px){
-    .box{
-        width: min(100%, 400px);
-    }
-    .box:nth-child(2){
-        order: -1;
-    }
-}
-@media screen and (min-width:1200px){
-    .box{
-        width: min(33% - 1rem, 500px); /*It's telling to take 33% of the available space while also leaving 1rem behind and grow upto max 500px.*/
-    }
-}
-@media screen and (max-height:425px) and (min-aspect-ratio: 7/4){
-    .box{
-        width: min(33% - 0.25rem, 200px);
-    }
-    h1{
-        font-size: 1.5rem;
-    }
-    nav{
-        display: none;
-    }
-    .box figcaption, .box p{
-        font-size: 1.3rem;
-    }
-    /*Flex:nowrap - forces all items to stay on ONE line regardless of their width. Normally flex items wrap to next line when they can't fit. nowrap overrides this and keeps everything on a single row even if items have to shrink. In landscape phone mode you want all three cards side by side in one row, not stacked — nowrap forces this.*/
-    main{
-        flex-direction: row;
-        flex-wrap: nowrap;   
-        justify-content: space-evenly;
-        align-items: stretch; /*makes all children stretch to the same height as the tallest item in a row.*/
-    }
+
+    100% {
+    transform: translate(0, 0);
+    background-color: yellow;
+    }    
 }
